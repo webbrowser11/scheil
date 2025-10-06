@@ -25,4 +25,5 @@ subprocess.run(["python3", "src/compiler.py", file])
 file = file[:-3]
 os.remove(f"{file}.sctk")
 os.remove(f"{file}.scir")
+os.remove(f"{file}.ll")
 print(f"Done! Your output file is {file}.sc")
