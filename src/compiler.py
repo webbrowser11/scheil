@@ -26,7 +26,6 @@ def compile_scir_to_llvm(scir_file):
     with open(llvm_file, 'w') as f:
         f.write(llvm_ir)
 
-    print(f"Generated LLVM IR: {llvm_file}")
     return llvm_file
 
 def generate_llvm_ir(output_text):
@@ -111,8 +110,6 @@ def main():
         print(f"Error: File {args.file} not found")
         sys.exit(1)
 
-    print("Compiling your program...")
-
     llvm_file = compile_scir_to_llvm(args.file)
     if not llvm_file:
         sys.exit(1)
@@ -124,8 +121,6 @@ def main():
     exe_file = link_object_to_exe(obj_file)
     if not exe_file:
         sys.exit(1)
-
-    print(f"Compilation complete! Run with: ./{os.path.basename(exe_file)}")
 
 if __name__ == "__main__":
     main()
