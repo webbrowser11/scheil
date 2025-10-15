@@ -21,7 +21,7 @@ subprocess.run(["python", "src/lexer.py", file], check=True)
 subprocess.run(["python", "src/parser.py", file], check=True)
 
 # Convert .sc → .scir
-scir_file = file.replace('.sl', '.scir')
+scir_file = file.replace('.scx', '.scir')
 if not os.path.isfile(scir_file):
     print(f"Error: {scir_file} not generated")
     exit(1)
@@ -29,7 +29,7 @@ if not os.path.isfile(scir_file):
 # Call compiler.py (NASM pipeline) directly
 subprocess.run(["python", "src/compiler.py", scir_file], check=True)
 
-file = file.replace('.sl', '')
+file = file.replace('.scx', '')
 
 os.remove(f"{file}.ll")
 os.remove(f"{file}.scir")
