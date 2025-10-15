@@ -75,7 +75,6 @@ def compile_llvm_to_object(llvm_file):
     try:
         subprocess.run(['llc', '-filetype=obj', '-o', obj_file, llvm_file],
                        check=True)
-        print(f"Generated object file: {obj_file}")
         return obj_file
     except subprocess.CalledProcessError as e:
         print("Error: llc failed\n", e)
@@ -89,7 +88,6 @@ def link_object_to_exe(obj_file):
     exe_file = obj_file.replace('.o', '.exe')
     try:
         subprocess.run(['gcc', obj_file, '-o', exe_file], check=True)
-        print(f"Linked executable: {exe_file}")
         return exe_file
     except subprocess.CalledProcessError as e:
         print("Error: gcc linking failed\n", e)
