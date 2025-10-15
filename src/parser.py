@@ -53,7 +53,7 @@ def replace_with_delimiters(output, variables):
     return output
 
 def main(file):
-    file = file[:-3]  # remove .sc
+    file = file[:-4]  # remove .scx
     file = rf"{file}.sctk"
     # read the token file first, then create new file and write to it.
     with open(file, "r") as f:
